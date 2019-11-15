@@ -1,8 +1,9 @@
 <template class="temp">
   <div id="app" style="text-align: center">
-    <span class="title">{{ showNumber }}</span><br>
-    <button @click="start">スタート</button>
-    <button @click="show">押して</button>
+    <span class="title" v-if="!spinButton">{{ showNumber }}</span>
+    <span class="title" v-else>{{ rouletteNumber }}</span><br>
+    <button @click="start" v-if="!spinButton">スタート</button>
+    <button @click="show" v-else>ストップ</button>
     <p class="already">{{ alreadyNumber }}</p>
   </div>
 </template>
@@ -17,42 +18,26 @@
         endNumber: 99,
         startNumber:0,
         showNumber: "",
+        rouletteNumber: "",
         spinButton: false,
       }
     },
-    mounted() {
+    mounted(){
       setInterval(function() {
-        //this.showNumber = this.getNumber();
-      },100);
-      // this.showNumber = setInterval(function() {
-      //   // ルーレット
-      //   this.rand(this.startNumber, this.endNumber);
-      // }, 1000);
+        this.rouletteNumber = this.getNumber();
+      }.bind(this) ,100);
     },
     methods:{
       start(){
         this.spinButton = true;
-        // this.showNumber = setInterval(function() {
-        //   // ルーレット
-        //   return 20;
-        // }, 1000);
-        this.showNumber = this.getNumber();
       },
       show(){
         this.spinButton = false;
-        clearInterval(this.showNumber);
+        // clearInterval(this.showNumber);
 
         let number = this.randomCount();
         this.showNumber = number;
         this.alreadyNumber.unshift(number);
-      },
-      loopCount(){
-        this.sleep(10).then(() => {
-          this.showNumber = this.getNumber();
-          return this.sleep(10);
-        }).then(() => {
-          this.showNumber = this.getNumber();
-        });
       },
       randomCount() {
         let number = this.getNumber();
@@ -77,13 +62,6 @@
       bool(number){
         return this.alreadyNumber.indexOf(number) < 0;
       },
-      sleep(time){
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            resolve();
-          }, time);
-        });
-      }
     }
   }
 </script>
