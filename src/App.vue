@@ -17,31 +17,45 @@
         endNumber: 99,
         startNumber:0,
         showNumber: "",
-        stopFlg: false,
+        spinButton: false,
       }
+    },
+    mounted() {
+      setInterval(function() {
+        //this.showNumber = this.getNumber();
+      },100);
+      // this.showNumber = setInterval(function() {
+      //   // ルーレット
+      //   this.rand(this.startNumber, this.endNumber);
+      // }, 1000);
     },
     methods:{
       start(){
-        while(!this.stopFlg){
-          this.showNumber = this.rand(this.startNumber, this.endNumber);
-        }
+        this.spinButton = true;
+        // this.showNumber = setInterval(function() {
+        //   // ルーレット
+        //   return 20;
+        // }, 1000);
+        this.showNumber = this.getNumber();
       },
       show(){
-        this.stopFlg = true;
+        this.spinButton = false;
+        clearInterval(this.showNumber);
+
         let number = this.randomCount();
-        // ここで何かしらの処理
-        // let step;
-        // for (step = 0; step < 10; step++){
-        //   setTimeout(() => {
-        //             this.showNumber = this.rand(this.startNumber, this.endNumber);
-        //           }
-        //           ,1000);
-        // }
         this.showNumber = number;
         this.alreadyNumber.unshift(number);
       },
+      loopCount(){
+        this.sleep(10).then(() => {
+          this.showNumber = this.getNumber();
+          return this.sleep(10);
+        }).then(() => {
+          this.showNumber = this.getNumber();
+        });
+      },
       randomCount() {
-        let number = this.rand(this.startNumber, this.endNumber);
+        let number = this.getNumber();
 
         while(this.showNumber <= this.endNumber){
           if (this.bool(number)) {
@@ -50,15 +64,25 @@
           if (this.alreadyNumber.length >= this.endNumber){
             break;
           }
-          number = this.rand(this.startNumber,this.endNumber);
+          number = this.getNumber();
         }
         return number;
+      },
+      getNumber() {
+        return this.rand(this.startNumber,this.endNumber);
       },
       rand(min, max){
         return Math.floor(Math.random() * (max - min + 1) + min);
       },
       bool(number){
         return this.alreadyNumber.indexOf(number) < 0;
+      },
+      sleep(time){
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, time);
+        });
       }
     }
   }
