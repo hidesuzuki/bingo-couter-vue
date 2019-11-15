@@ -9,6 +9,8 @@
 </template>
 
 <script>
+  import drum from './assets/drum.mp3';
+  import cymbal from './assets/cymbal.mp3';
 
   export default {
     name: 'app',
@@ -20,6 +22,7 @@
         showNumber: "",
         rouletteNumber: "",
         spinButton: false,
+        music: {},
       }
     },
     mounted(){
@@ -30,10 +33,14 @@
     methods:{
       start(){
         this.spinButton = true;
+        this.music = new Audio(drum);
+        this.music.play();
       },
       show(){
+        this.music.pause();
         this.spinButton = false;
-        // clearInterval(this.showNumber);
+        const audio = new Audio(cymbal);
+        audio.play();
 
         let number = this.randomCount();
         this.showNumber = number;
@@ -62,7 +69,7 @@
       bool(number){
         return this.alreadyNumber.indexOf(number) < 0;
       },
-    }
+    },
   }
 </script>
 

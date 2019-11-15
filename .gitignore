@@ -19,3 +19,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+#assets
+src/assets/drum.mp3
+src/assets/cymbal.mp3
+
