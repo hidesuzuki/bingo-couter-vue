@@ -22,7 +22,7 @@
         showNumber: "",
         rouletteNumber: "",
         spinButton: false,
-        music: {},
+        drumMusic: {},
       }
     },
     mounted(){
@@ -31,13 +31,19 @@
       }.bind(this) ,100);
     },
     methods:{
+      isNotStart(){
+        let count = this.endNumber - this.startNumber;
+        return count >= this.alreadyNumber.length;
+      },
       start(){
-        this.spinButton = true;
-        this.music = new Audio(drum);
-        this.music.play();
+        if(this.isNotStart()){
+          this.spinButton = true;
+          this.drumMusic = new Audio(drum);
+          this.drumMusic.play();
+        }
       },
       show(){
-        this.music.pause();
+        this.drumMusic.pause();
         this.spinButton = false;
         const audio = new Audio(cymbal);
         audio.play();
