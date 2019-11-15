@@ -1,28 +1,79 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template class="temp">
+  <div id="app" style="text-align: center">
+    <span class="title">{{ showNumber }}</span><br>
+    <button @click="start">スタート</button>
+    <button @click="show">押して</button>
+    <p class="already">{{ alreadyNumber }}</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  export default {
+    name: 'app',
+    data() {
+      return {
+        alreadyNumber: [],
+        endNumber: 99,
+        startNumber:0,
+        showNumber: "",
+        stopFlg: false,
+      }
+    },
+    methods:{
+      start(){
+        while(!this.stopFlg){
+          this.showNumber = this.rand(this.startNumber, this.endNumber);
+        }
+      },
+      show(){
+        this.stopFlg = true;
+        let number = this.randomCount();
+        // ここで何かしらの処理
+        // let step;
+        // for (step = 0; step < 10; step++){
+        //   setTimeout(() => {
+        //             this.showNumber = this.rand(this.startNumber, this.endNumber);
+        //           }
+        //           ,1000);
+        // }
+        this.showNumber = number;
+        this.alreadyNumber.unshift(number);
+      },
+      randomCount() {
+        let number = this.rand(this.startNumber, this.endNumber);
+
+        while(this.showNumber <= this.endNumber){
+          if (this.bool(number)) {
+            break;
+          }
+          if (this.alreadyNumber.length >= this.endNumber){
+            break;
+          }
+          number = this.rand(this.startNumber,this.endNumber);
+        }
+        return number;
+      },
+      rand(min, max){
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      },
+      bool(number){
+        return this.alreadyNumber.indexOf(number) < 0;
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .title{
+    font-size: 800px;
+    color: white;
+  }
+  .already{
+    color: white;
+    font-size: 50px;
+  }
+  #app{
+    background-color: crimson;
+  }
 </style>
