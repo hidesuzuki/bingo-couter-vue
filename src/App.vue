@@ -89,6 +89,6 @@
     font-size: 50px;
   }
   #app{
-    background-color: crimson;
+    background-color: #ff3e12;
   }
 </style>
