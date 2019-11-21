@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import drum from './assets/drum.mp3';
+  import drum from './assets/drum_roll.mp3';
   import cymbal from './assets/cymbal.mp3';
 
   export default {
@@ -17,8 +17,8 @@
     data() {
       return {
         alreadyNumber: [],
-        endNumber: 99,
-        startNumber:0,
+        endNumber: 80,
+        startNumber:1,
         showNumber: "",
         rouletteNumber: "",
         spinButton: false,
