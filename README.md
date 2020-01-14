@@ -1,24 +1,29 @@
-# bingo-counter-vue
+# 簡易ビンゴアプリ
+====
 
-## Project setup
-```
-npm install
-```
+## Overview
+簡易的なビンゴアプリです。
+友人の結婚式の二次会でのビンゴゲームに使用しました。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Description
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Demo
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## VS. 
+
+## Requirement
+
+## Usage
+
+## Install
+
+## Contribution
+
+## Licence
+
+[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+
+## Author
+
+[tcnksm](https://github.com/tcnksm)
