@@ -17,7 +17,7 @@
     data() {
       return {
         alreadyNumber: [],
-        endNumber: 80,
+        endNumber: 75,
         startNumber:1,
         showNumber: "",
         rouletteNumber: "",
