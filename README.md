@@ -6,7 +6,7 @@
 友人の結婚式の二次会でのビンゴゲームに使用しました。
 
 ## 音楽：魔王魂
-ドラムロールの効果音は魔王魂さんのものを使用させていただいております。
+ドラムロールの効果音は[魔王魂さん](https://maoudamashii.jokersounds.com/)のものを使用させていただいております。
 
 ## Description
 
@@ -30,3 +30,4 @@
 ## Author
 
 [tcnksm](https://github.com/tcnksm)
+git
