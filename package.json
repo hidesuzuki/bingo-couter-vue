@@ -11,7 +11,7 @@
     "core-js": "^3.27.2",
     "vue": "^3.2.45",
     "serialize-javascript": ">=6.0.1",
-    "minimist": ">=1.2.7"
+    "minimist": ">=1.2.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^5.0.8",
